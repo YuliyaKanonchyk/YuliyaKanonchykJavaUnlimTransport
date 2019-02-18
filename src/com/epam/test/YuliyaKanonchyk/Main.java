@@ -7,6 +7,7 @@ public class Main {
   public static void main(String[] args) {
     Transport loco = new Locomotive();
     ((Locomotive) loco).preStartCheck();
+
   }
 
 }
