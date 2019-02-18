@@ -1,43 +1,47 @@
 package com.epam.test.YuliyaKanonchyk.entity;
 
-import java.util.EnumSet;
-import java.util.Random;
-import java.util.Set;
+public class PassengerWagon implements Wagon {
 
-public class PassengerWagon {
-
-    private enum wagonEnum {
-        PASSENGER_WAGON_1,
-        PASSENGER_WAGON_2,
-        PASSENGER_WAGON_3,
-        PASSENGER_WAGON_4;
+    public enum WagonType {
+        PLATSKART,
+        KUPE,
+        RESTORAN;
     }
 
-  Set<wagonEnum> passWagon = EnumSet.allOf(wagonEnum.class);
+    private WagonType wagonType;
+    private int passangers;
+    private int luggages;
 
-  Random random=new Random();
-  int passNum = random.nextInt(100);
-  int luggNum = random.nextInt(100);
-  boolean cafWag = random.nextBoolean();
+    public PassengerWagon(WagonType wagonType) {
+        this.wagonType = wagonType;
+    }
 
-  public final int MAX_SEATS_NUMBER=70;
-  private int passengersNumber = passNum;
-  public final int MAX_PASSENGER_NUMBER = 100;
-  public final int MAX_LUGGAGE_NUMBER = 100;
-  boolean isCafeWagon = cafWag;
+    @Override
+    public void fillRandomly() {
+        passangers = (int) (Math.random() * 100);
+        luggages = (int) (Math.random() * 100);
+    }
 
-  PassengerWagon() {
-  }
-    PassengerWagon(int passengersNumber, boolean isCafeWagon, int luggNum) {
-        this.passengersNumber = passengersNumber;
-        this.isCafeWagon = isCafeWagon;
-        this.luggNum = luggNum;
+    @Override
+    public int getPassengers() {
+        return passangers;
+    }
+
+    @Override
+    public int getLuggeges() {
+        return luggages;
+    }
+
+    public WagonType getWagonType() {
+        return wagonType;
     }
 
     @Override
     public String toString() {
-        return "PassengerWagon{" +"passWagon=" + passWagon +'}';
+        return "PassengerWagon{" +
+                "wagonType=" + wagonType +
+                ", passangers=" + passangers +
+                ", luggages=" + luggages +
+                '}';
     }
-
-
 }
